@@ -1,3 +1,4 @@
+import time
 
 with open('mas.txt', 'r') as f:
     line = f.read()
@@ -9,10 +10,14 @@ def bubble_sort(lst):
             if lst[j] > lst [j+1]:
                 lst[j], lst[j+1] = lst[j+1], lst[j]
     return lst
+
 print(bubble_sort(list(map(int, line.split(',')))))
+start = time.time()
+bubble_sort(list(map(int, line.split(','))))
+end = time.time()
+print("bubble_sort:", end - start)
 '''Принцип: Сравнивает соседние элементы и меняет их местами, если они не в порядке. Повторяет этот процесс до тех пор, пока весь список не будет отсортирован.
-Область применения: Простые списки небольшого размера.
-351.99856758117676 миллисекунд'''
+Область применения: Простые списки небольшого размера'''
 
 def insertion_sort(alist):
     for i in range(1, len(alist)):
@@ -23,10 +28,14 @@ def insertion_sort(alist):
             j = j - 1
         alist[j + 1] = temp
     return alist
+
 print(insertion_sort(list(map(int, line.split(',')))))
+start = time.time()
+insertion_sort(list(map(int, line.split(','))))
+end = time.time()
+print("insertion_sort:", end - start)
 '''Принцип: Вставляет каждый элемент в правильную позицию в уже отсортированной части списка.
-Область применения: Списки, которые уже частично отсортированы или почти отсортированы.
-51.03349685668945 миллисекунд'''
+Область применения: Списки, которые уже частично отсортированы или почти отсортированы.'''
 
 def merge_sort(lst):
     if len(lst) <=1:
@@ -54,9 +63,12 @@ def merge(left_half, right_half):
     return res
 
 print(merge_sort(list(map(int, line.split(',')))))
+start = time.time()
+merge_sort(list(map(int, line.split(','))))
+end = time.time()
+print("merge_sort:", end - start)
 '''Принцип: Делит список на две части, сортирует каждую часть рекурсивно, а затем сливает отсортированные части воедино.
-Область применения: Большие списки, особенно когда память ограничена.
-8.028268814086914 миллисекунд'''
+Область применения: Большие списки, особенно когда память ограничена.'''
 
 def quick_sort(s):
     if len(s) <= 1:
@@ -70,9 +82,13 @@ def quick_sort(s):
     return quick_sort(left) + center + quick_sort(right)
 
 print(quick_sort(list(map(int, line.split(',')))))
+start = time.time()
+quick_sort(list(map(int, line.split(','))))
+end = time.time()
+print("quick_sort:", end - start)
+
 ''' Принцип: Выбирает опорный элемент, делит список на два подсписка (элементы меньше и больше опорного элемента) и рекурсивно применяет ту же процедуру к подспискам.
-Область применения: Большие списки, когда память не ограничена.
-13.997554779052734 миллисекунд'''
+Область применения: Большие списки, когда память не ограничена'''
 
 def counting_sort(alist, largest):
     c = [0] * (largest + 1)
@@ -88,10 +104,16 @@ def counting_sort(alist, largest):
     return res
 
 largest = max(list(map(int, line.split(','))))
+
 print(counting_sort(list(map(int, line.split(','))), largest))
+
+start = time.time()
+counting_sort(list(map(int, line.split(','))), largest)
+end = time.time()
+print("counting_sort:", end - start)
 ''' Принцип: Работает только для списков с ограниченным набором значений. Создаёт массив частот для каждого возможного значения, а затем использует эти частоты для определения позиции каждого элемента в отсортированном списке.
-Область применения: Списки с небольшим набором значений, например, подсчёт букв в тексте.
-5.0029754638671875 миллисекунд'''
+Область применения: Списки с небольшим набором значений, например, подсчёт букв в тексте'''
+
 
 f.close()
 
